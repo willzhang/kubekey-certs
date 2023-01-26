@@ -27,6 +27,7 @@ jobs:
         run: |
           cd kubekey
           ls
+          export RELEASE_TAG=v3.0.7
           make release
       - name: Release
         uses: softprops/action-gh-release@v1
