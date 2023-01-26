@@ -28,6 +28,7 @@ jobs:
 
       - name: generate release artifacts
         run: |
+          cd kubekey
           export RELEASE_TAG=${kubekey_version}
           make release
           
