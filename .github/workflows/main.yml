@@ -35,9 +35,8 @@ jobs:
       - name: generate release artifacts
         run: |
           cd kubekey
-          git checkout v3.0.7
           export RELEASE_TAG=${kubekey_version}
-          make release
+          make release-binary
           
       - name: Release
         uses: softprops/action-gh-release@v1
