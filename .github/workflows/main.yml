@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
 
 jobs:
   build:
@@ -23,9 +23,10 @@ jobs:
       - name: git clone
         run: |
           git clone https://github.com/kubesphere/kubekey.git --depth=1 -b v3.0.7
-          cd kubekey
       - name: generate release artifacts
         run: |
+          cd kubekey
+          ls
           make release
       - name: Release
         uses: softprops/action-gh-release@v1
