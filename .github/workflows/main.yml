@@ -35,6 +35,7 @@ jobs:
       - name: generate release artifacts
         run: |
           cd kubekey
+          git checkout v3.0.7
           export RELEASE_TAG=${kubekey_version}
           make release
           
