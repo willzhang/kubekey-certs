@@ -13,20 +13,13 @@ jobs:
     name: create draft release
     runs-on: ubuntu-latest
     steps:
-      - name: Set env
-        run:  echo "RELEASE_TAG=${GITHUB_REF:10}" >> $GITHUB_ENV
-      - name: checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - name: Install go
         uses: actions/setup-go@v3
         with:
           go-version: '^1.19'
       - name: git clone
         run: |
-          git clone --depth 1 --branch ${kubekey_version} https://github.com/kubesphere/kubekey.git
-          cd kubekey
+          git clone -q --depth=1 --branch ${kubekey_version} https://github.com/kubesphere/kubekey.git
           wget https://github.com/lework/kubeadm-certs/releases/download/${kubeadm_version}/kubeadm-linux-amd64
           tmp=$(mktemp)
           kubeadm_sha256sum=$(sha256sum kubeadm-linux-amd64 | cut -d " " -f 1)
